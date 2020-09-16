@@ -126,3 +126,29 @@ $post = Todo::where('id', '=', $id)->firstOrFail();
 ```
 
 This will automatically send a 404 if the post is not available.
+
+## Migrations
+
+To create a migration we can run:
+
+```sh
+php artisan make:migration create_posts_table
+```
+
+This will create a migration to create the posts table. We can find all migrations in the `/database/migrations` folder.
+
+We'll run `php artisan migrate` to migrate and `php artisan migrate:rollback` to rollback a migration.
+
+> We can create a model, controller, and migrations with a single command by adding `-mc` to the `make:model` command. Like `php artisan make:model Post  -mc`.
+
+## Models
+
+We can create a logic by creating a function inside a model. Such as to complete a todo we can write a this function:
+
+```php
+public function complete() {
+    $this->completed = true;
+    $this->save();
+}
+```
+
