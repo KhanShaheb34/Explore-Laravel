@@ -98,3 +98,31 @@ We can create a controller in two different ways. We can create a php file insid
 ```sh
 php artisan make:controller controller_name
 ```
+
+## Database
+
+The description of the database should be written in the `.env` file. The `.env` file is generated during the project generation.
+
+The config file for database connection is in the `config/database.php` file.
+
+Now we can make queries to the database by using the `DB` namespace, like:
+
+```php
+$post = DB::table('posts')->where('id', '=', $id)->first();
+```
+
+More queries are available [here](https://laravel.com/docs/8.x/queries).
+
+We can use **Eloquent** for cleaner queries and business logic. To create a Eloquent model we have to run:
+
+```sh
+php artisan make:model Post
+```
+
+Now we can do a `where` query like this:
+
+```php
+$post = Todo::where('id', '=', $id)->firstOrFail();
+```
+
+This will automatically send a 404 if the post is not available.
